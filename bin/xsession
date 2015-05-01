@@ -13,7 +13,7 @@ setxkbmap de -variant neo
 xsetroot -cursor_name left_ptr 
 xrdb -merge ~/.Xdefaults 
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources 
-
+[[ -f VBoxClient-all ]] && /usr/bin/VBoxClient-all
 # Start the system tray
 tray &
 
