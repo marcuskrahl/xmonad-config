@@ -1,5 +1,5 @@
 # xmonad-config
-xmonad-config is a modified [xmonad](http://xmonad.org/) configuration used by Marcus Krahl initially created by Vic Fryzel.
+xmonad-config is a modified [xmonad](http://xmonad.org/) configuration initially created by Vic Fryzel.
 It is setup to be used especially on laptops.
 
 ## Introduction
