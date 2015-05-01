@@ -7,6 +7,8 @@
 # Configure PATH so that we can access our scripts below
 PATH=$PATH:~/.cabal/bin:~/.xmonad/bin
 
+setxkbmap de -variant neo
+
 # Configure X
 xsetroot -cursor_name left_ptr &
 xrdb -merge ~/.Xdefaults &
@@ -15,11 +17,17 @@ xrdb -merge ~/.Xdefaults &
 tray &
 
 # Start two terminals
-gnome-terminal &
-gnome-terminal &
+urxvt &
+urxvt &
 
 # Start a browser
-google-chrome &
+#google-chrome &
+firefox &
+thunderbird &
+sonata &
+
+owncloud & 
+nm-applet &
 
 # Start screensaver
 # Kill gnome-screensaver if started by default
@@ -29,4 +37,7 @@ xscreensaver -no-splash &
 # Start sound server
 pulseaudio --start &
 
-exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
+#exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
+xmonad

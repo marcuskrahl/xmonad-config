@@ -1,6 +1,6 @@
 # xmonad-config
-xmonad-config is the [xmonad](http://xmonad.org/) configuration used by Vic Fryzel.
-
+xmonad-config is a modified [xmonad](http://xmonad.org/) configuration used by Marcus Krahl initially created by Vic Fryzel.
+It is setup to be used especially on laptops.
 
 ## Introduction
 
@@ -39,15 +39,13 @@ For source code, or to contribute, see the
 
 ### Installing requirements on [Arch Linux](http://www.archlinux.org/)
 
-    sudo pacman -S xmonad xmonad-contrib xmobar stalonetray dmenu scrot \
-        cabal-install
+    sudo pacman -S xmonad xmonad-contrib xmobar stalonetray dmenu scrot cabal-install
     cabal update
     cabal install yeganesh
 
 ### Installing requirements on [Ubuntu Linux](http://www.ubuntu.com/)
 
-    sudo aptitude install xmonad libghc-xmonad-contrib-dev xmobar stalonetray \
-        suckless-tools scrot cabal-install
+    sudo aptitude install xmonad libghc-xmonad-contrib-dev xmobar stalonetray suckless-tools scrot cabal-install
     cabal update
     cabal install yeganesh
 
@@ -58,7 +56,7 @@ you may already have, cloning the git repository, and updating your PATH.
 
     cd
     mv .xmonad .xmonad.orig
-    git clone https://github.com/vicfryzel/xmonad-config.git .xmonad
+    git clone https://github.com/marcuskrahl/xmonad-config.git .xmonad
     echo "export PATH=\$PATH:~/.cabal/bin:~/.xmonad/bin" >> ~/.bashrc
     source ~/.bashrc
 
@@ -71,13 +69,14 @@ here are some instructions for some common login managers.
     ln -s ~/.xmonad/bin/xsession ~/.xsession
     # Logout, login from lightdm/xdm/kdm/gdm
 
-### Starting xmonad from slim
+### Starting xmonad from slim or startx
 
     ln -s ~/.xmonad/bin/xsession ~/.xinitrc
-    # Logout, login from slim
-
+    # Logout, login from slim / run startx
 
 ## Keyboard shortcuts
+
+Screen dimming and volume control should work out of the box with your laptop's default keys
 
 After starting xmonad, use the following keyboard shortcuts to function in
 your new window manager.  I recommend you print these out so that you don't
@@ -135,3 +134,12 @@ layout after a fullscreen application may have turned off one of the screens.
 
 Colors set in the xmobar config and dmenu script are meant to coincide with the
 [IR_Black terminal and vim themes](http://blog.infinitered.com/entries/show/6).
+
+##  Changes from the original repository
+
+* Fixed a bug in dmenu-with-yeganesh
+* Changed the xmobar layout
+* Customized xsession to run different programs on startup
+* Changed the tab layout
+* Uses pulseaudio instead of ALSA
+* Added the correct key codes for laptop and multi media functions

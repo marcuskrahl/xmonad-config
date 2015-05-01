@@ -16,6 +16,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
@@ -25,14 +26,15 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal = "/usr/bin/gnome-terminal"
+--myTerminal = "/usr/bin/gnome-terminal"
+myTerminal = "/usr/bin/urxvt"
 
 
 ------------------------------------------------------------------------
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-myWorkspaces = ["1:term","2:web","3:code","4:vm","5:media"] ++ map show [6..9]
+myWorkspaces = ["1:term","2:web","3:code","4:vm","5:media"] ++ map show [6..7] ++ ["8:mail","9:music"]
 
 
 ------------------------------------------------------------------------
@@ -51,7 +53,9 @@ myWorkspaces = ["1:term","2:web","3:code","4:vm","5:media"] ++ map show [6..9]
 --
 myManageHook = composeAll
     [ className =? "Chromium"       --> doShift "2:web"
-    , className =? "Google-chrome"  --> doShift "2:web"
+    , className =? "Firefox"        --> doShift "2:web"
+    , className =? "Thunderbird"    --> doShift "8:mail"
+    , className =? "Sonata"         --> doShift "9:music"
     , resource  =? "desktop_window" --> doIgnore
     , className =? "Galculator"     --> doFloat
     , className =? "Steam"          --> doFloat
@@ -153,18 +157,23 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask, xK_o),
      spawn "fetchotp -x")
 
+  , ((0, xF86XK_MonBrightnessUp), 
+  	 spawn "xbacklight +20")
+
+  , ((0, xF86XK_MonBrightnessDown), 
+  	 spawn "xbacklight -20")
 
   -- Mute volume.
-  , ((modMask .|. controlMask, xK_m),
-     spawn "amixer -q set Master toggle")
+  , ((0, xF86XK_AudioMute),
+     spawn "pactl set-sink-mute 1 toggle")
 
   -- Decrease volume.
-  , ((modMask .|. controlMask, xK_j),
-     spawn "amixer -q set Master 10%-")
+  , ((0, xF86XK_AudioLowerVolume),
+     spawn "pactl set-sink-volume 1 -10%")
 
   -- Increase volume.
-  , ((modMask .|. controlMask, xK_k),
-     spawn "amixer -q set Master 10%+")
+  , ((0, xF86XK_AudioRaiseVolume),
+     spawn "pactl set-sink-volume 1 +10%")
 
   -- Audio previous.
   , ((0, 0x1008FF16),
