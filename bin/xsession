@@ -12,8 +12,9 @@ setxkbmap de -variant neo
 # Configure X
 xsetroot -cursor_name left_ptr 
 xrdb -merge ~/.Xdefaults 
+[[ `xrandr | grep connected | wc -l` -ge 2 ]] && nohup bash -c "sleep 3 ; xrandr --output VGA-0 --mode 1920x1080 --pos 0x0 --rotate normal --output VGA-1 --mode 1280x1024 --pos 1920x0 --rotate normal" &
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources 
-[[ -f VBoxClient-all ]] && /usr/bin/VBoxClient-all
+[[ -f /usr/bin/VBoxClient-all ]] && /usr/bin/VBoxClient-all
 # Start the system tray
 tray &
 
