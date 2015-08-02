@@ -141,6 +141,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_p),
      spawn "dmenu-with-yeganesh")
 
+  -- Launch passmenu 
+  , ((modMask, xK_a),
+     spawn "passmenu")
+
   -- Take a screenshot in select mode.
   -- After pressing this key binding, click a window, or draw a rectangle with
   -- the mouse.
