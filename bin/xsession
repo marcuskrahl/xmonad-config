@@ -27,7 +27,7 @@ urxvt &
 firefox &
 thunderbird &
 sonata &
-hash pidgin 2>/dev/null && pidgin
+hash pidgin 2>/dev/null && pidgin & 
 
 owncloud & 
 nm-applet &
