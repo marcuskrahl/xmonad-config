@@ -36,9 +36,6 @@ nm-applet &
 killall gnome-screensaver &
 xscreensaver -no-splash &
 
-# Start sound server
-pulseaudio --start &
-
 #exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
 xmonad
 7
