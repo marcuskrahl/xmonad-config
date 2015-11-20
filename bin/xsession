@@ -29,7 +29,7 @@ thunderbird &
 sonata &
 hash pidgin 2>/dev/null && pidgin & 
 
-owncloud & 
+#owncloud & 
 nm-applet &
 
 # Start screensaver
