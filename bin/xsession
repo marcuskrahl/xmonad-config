@@ -7,12 +7,19 @@
 # Configure PATH so that we can access our scripts below
 PATH=$PATH:~/.cabal/bin:~/.xmonad/bin
 
+disable_oculus_dk2() {
+    oculus_port=`xrandr | grep "1080x1920+0+0" | awk -F ' ' '{print $1;}'`
+    [[ $oculus_port != '' ]] && echo "disabling oculus at port $oculus_port" && nohup bash -c "sleep 3; xrandr --output $oculus_port --off"
+
+}
+
 setxkbmap de -variant neo
 
 # Configure X
 xsetroot -cursor_name left_ptr 
 xrdb -merge ~/.Xdefaults 
 [[ `xrandr | grep " connected" | wc -l` -ge 2 ]] && nohup bash -c "sleep 3 ; xrandr --output DVI-D-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-I-0 --mode 1280x1024 --pos 1920x0 --rotate normal" &
+disable_oculus_dk2
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources 
 [[ -f /usr/bin/VBoxClient-all ]] && /usr/bin/VBoxClient-all
 # Start the system tray
