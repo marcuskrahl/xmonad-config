@@ -44,5 +44,8 @@ nm-applet &
 killall gnome-screensaver &
 xscreensaver -no-splash &
 
+# Start auto mount
+udiskie -ans2 &
+
 #exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
 xmonad
