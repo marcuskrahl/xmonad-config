@@ -47,5 +47,9 @@ xscreensaver -no-splash &
 # Start auto mount
 udiskie -ans2 &
 
+# Start kdeconnect
+/usr/lib/kdeconnecd &
+indicator-kdeconnect &
+
 #exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
 xmonad
