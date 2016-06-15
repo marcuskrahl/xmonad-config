@@ -48,7 +48,7 @@ xscreensaver -no-splash &
 udiskie -ans2 &
 
 # Start kdeconnect
-/usr/lib/kdeconnecd &
+/usr/lib/kdeconnectd &
 indicator-kdeconnect &
 
 #exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
